@@ -10,22 +10,30 @@ import { WinnersModal } from "./WinnersModal"
 
 
 export function Triki() {
-    const [board, setBoard] = useState(Array(9).fill(null))
+    const [board, setBoard] = useState(() => {
+        const boardFromStorage = localStorage.getItem("board")
+        return boardFromStorage ? JSON.parse(boardFromStorage) : Array(9).fill(null)
 
-    const [turn, setTurn] = useState(TURNS.X)
+    })
+
+    const [turn, setTurn] = useState(() => {
+        const turnFromStrorage = localStorage.getItem("turn")
+        return turnFromStrorage ?? TURNS.X
+    })
 
     const [winner, setWinner] = useState(null)//null no ahi ganador y false un empate 
 
 
-
+    // reinicia los estados.
     const resetGame = () => {
-
         setBoard(Array(9).fill(null))
         setTurn(TURNS.X)
         setWinner(null)
+
+        // reseteamos el localStorage
+        localStorage.removeItem('board')
+        localStorage.removeItem('turn')
     }
-
-
 
     // el of devuelve cada elemento completo del array 
     // el in devuelve cada indel del elemento del aray
@@ -35,12 +43,18 @@ export function Triki() {
         // verifica si existe para retornar nada o continuar funcionando
         if (board[index] || winner) return
         //actualizamos el tablero
-        const newBoard = [...board]
+        const newBoard = [...board] // creamos un nuebo tablero para no mutar las props.
         newBoard[index] = turn
         setBoard(newBoard)
         //cambiamos el turno
         const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
         setTurn(newTurn)
+        // guardar la partida en el storage
+        localStorage.setItem("board", JSON.stringify(newBoard))
+        localStorage.setItem("turn", newTurn)
+
+
+
         //actualizar winner
         const newWinner = checkWinnerFrom(newBoard)
         if (newWinner) {
@@ -57,7 +71,7 @@ export function Triki() {
         <>
             <main className="board">
                 <h1 className="text-body">Triki</h1>
-                <button className="text-body border border-2 w-50 border-secondary" onClick={resetGame}>resetear el juego</button>
+                <button className="text-body btn-re border border-2 w-50 border-secondary" onClick={resetGame}>resetear el juego</button>
                 <section className="game">
                     {
                         board.map((square, index) => {

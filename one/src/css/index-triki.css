@@ -16,6 +16,8 @@
 }
 
 
+
+
 * {
   padding: 0;
   margin: 0;
@@ -112,8 +114,12 @@
   gap: 15px;
 }
 
-.btn-re:hover {
-  color: #222 !important;
+.btn-re {
+  color: #fff;
+
+  &:hover {
+    color: #212529 !important;
+  }
 }
 
 .square {

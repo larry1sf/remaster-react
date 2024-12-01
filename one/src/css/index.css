@@ -43,44 +43,36 @@ h1 {
   }
 
   .follow:hover {
-
     span {
-      color: #fff
+      color: #ff0000
     }
   }
 }
 
 [data-bs-theme=light] {
-
-  .follow span,
-  .no-follow span {
-    color: #213547;
-  }
-
   .follow {
-    span {
-
-      color: #000000 !important;
-    }
-
     &:hover {
       span {
-        color: #213547
+        color: #d41515
       }
+    }
+  }
+
+  .no-follow:hover {
+    span {
+      color: #f9f9f9;
     }
   }
 }
 
 .follow {
-  opacity: .8 !important;
   transition: .2s !important;
 
   &:hover {
-    background-color: #ff000d52 !important;
+    opacity: .9 !important;
+    background-color: #ff000d1f !important;
     border-color: #f00 !important;
-    color: #213547;
-
-
+    color: #db0f0f;
 
     span:nth-child(1) {
       display: none;
@@ -93,10 +85,10 @@ h1 {
 }
 
 .no-follow {
-  transition: .2s;
+  transition: .2s !important;
 
   &:hover {
-    background-color: #2986ffb6 !important;
+    background-color: #016fffea !important;
     color: #f9f9f9 !important;
     border-color: rgb(0, 102, 255) !important;
   }
