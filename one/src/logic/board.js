@@ -1,4 +1,4 @@
-import { WINNER_COMBOS } from "../constantes"
+import { WINNER_COMBOS } from "@/constantes"
 export  const checkWinnerFrom = (boardToCheck) => {
     //revisamo si ahi un ganador
     for (const combo of WINNER_COMBOS) {

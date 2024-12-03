@@ -1,12 +1,10 @@
-import Card from "./components/Card";
-import react from "./assets/react.svg"
+import react from "°/assets/react.svg"
 import vite from "/vite.svg"
 
-import Indice from "./Indice";
+import Indice from "°/Indice";
 
-import { Triki } from "./components/Triki";
-
-
+import { Card } from "°/components/Card";
+import { Triki } from "°/components/Triki";
 
 
 
@@ -23,9 +21,13 @@ function App() {
                 <Triki />
             </Indice >
 
-
         </>
     )
+    // return (
+    //     <>
+    //         <UseEffect></UseEffect>
+    //     </>
+    // )
 }
 
 export default App

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Card({ title, img, red }) {
+export function Card({ title, img, red }) {
 
     const [isfollow, setIsfollow] = useState(
         () => {

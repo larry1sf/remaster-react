@@ -7,6 +7,7 @@ import confetti from "canvas-confetti"
 import { useState } from "react"
 import { checkWinnerFrom, checkEndGame } from "../logic/board"
 import { WinnersModal } from "./WinnersModal"
+import { resetLS, setLS } from "../logic/lStorage"
 
 
 export function Triki() {
@@ -29,10 +30,8 @@ export function Triki() {
         setBoard(Array(9).fill(null))
         setTurn(TURNS.X)
         setWinner(null)
-
         // reseteamos el localStorage
-        localStorage.removeItem('board')
-        localStorage.removeItem('turn')
+        resetLS()
     }
 
     // el of devuelve cada elemento completo del array 
@@ -50,11 +49,7 @@ export function Triki() {
         const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
         setTurn(newTurn)
         // guardar la partida en el storage
-        localStorage.setItem("board", JSON.stringify(newBoard))
-        localStorage.setItem("turn", newTurn)
-
-
-
+        setLS({ board: newBoard, turn: newTurn })
         //actualizar winner
         const newWinner = checkWinnerFrom(newBoard)
         if (newWinner) {
